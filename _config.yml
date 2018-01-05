@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Aaron Gokaslan's Website
+title: Aaron Gokaslan
 email: aaronGokaslan@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Aaron Gokaslan's personal website.
@@ -22,7 +22,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: skylion007
 github_username:  skylion007
 
-  
+
 # Build settings
 markdown: kramdown
 # theme: minimal-mistakes-jekyll
@@ -124,7 +124,7 @@ analytics:
 author:
   name		   : "Aaron Gokaslan"
   avatar	   : "/assets/images/headshot.jpg"
-  bio		   :  "I am senior at Brown University interested in research, hackathons, and more."  
+  bio		   :  "I am senior at Brown University interested in research, hackathons, and more."
   location         : "Providence, RI"
   email            : "aaronGokaslan@gmail.com"
   uri              :
@@ -143,10 +143,10 @@ author:
   linkedin         : "aarongokaslan" # "john-doe-12345678" (the last part of your profile url, e.g. https://www.linkedin.com/in/john-doe-12345678)
   pinterest        :
   soundcloud       :
-  stackoverflow    : # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
+  stackoverflow    : 2444240/skylion # "123456/username" (the last part of your profile url, e.g. https://stackoverflow.com/users/123456/username)
   steam            : # "steamId" (the last part of your profile url, e.g. https://steamcommunity.com/id/steamId/)
-  tumblr           :
-  twitter          :
+  tumblr           : "skylion007"
+  twitter          : "skyli0n"
   vine             :
   weibo            :
   xing             :
@@ -222,5 +222,3 @@ defaults:
       comments: false
       share: true
       related: true
-
-
