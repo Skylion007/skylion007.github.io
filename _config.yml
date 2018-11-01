@@ -49,6 +49,7 @@ plugins:
   - jemoji
   - jekyll-remote-theme
   - jekyll-redirect-from
+  - jekyll-include-cache
 whitelist:
   - jekyll-paginate
   - jekyll-sitemap
@@ -57,6 +58,7 @@ whitelist:
   - jemoji
   - jekyll-remote-theme
   - jekyll-redirect-from
+  - jekyll-include-cache
 
 words_per_minute         : 200
 comments:
@@ -198,6 +200,9 @@ tag_archive:
 
 collections:
   portfolio:
+    output: true
+    permalink: /:collection/:path/
+  publications:
     output: true
     permalink: /:collection/:path/
 
