@@ -5,6 +5,8 @@ permalink: /pubs/
 author_profile: true
 ---
 {% assign pubs = site.publications | sort: 'order' | reverse %}
+<div class="feature__wrapper">
 {% for post in pubs %}
   {% include publication-link.html %}
 {% endfor %}
+</div>

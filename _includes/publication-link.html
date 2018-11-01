@@ -11,51 +11,49 @@
 {% assign include.type = left %}
 
 
-<div class="feature__wrapper">
-  {% include feature_row id="feature_row2" type="left" %}
-  <div class="feature__item--left">
-    <div class="archive__item">
-      {% if teaser %}
-      <div class="archive__item-teaser">
-        <img src={% if f.image_path contains "://" %} "{{ teaser }}" {% else %} "{{ teaser | relative_url }}" {% endif %} alt="{% if f.alt %}{{ f.alt }}{% endif %}"> {% if f.image_caption %}
-        <span class="archive__item-caption">{{ f.image_caption | markdownify | remove: "<p>" | remove: "</p>" }}</span> {% endif %}
+{% include feature_row id="feature_row2" type="left" %}
+<div class="feature__item--left">
+  <div class="archive__item">
+    {% if teaser %}
+    <div class="archive__item-teaser">
+      <img src={% if f.image_path contains "://" %} "{{ teaser }}" {% else %} "{{ teaser | relative_url }}" {% endif %} alt="{% if f.alt %}{{ f.alt }}{% endif %}"> {% if f.image_caption %}
+      <span class="archive__item-caption">{{ f.image_caption | markdownify | remove: "<p>" | remove: "</p>" }}</span> {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="archive__item-body">
+      {% if title %}
+      <h2 class="archive__item-title">{{ title }}</h2> {% endif %} {% if post.venue %}
+      <div class="archive__item-excerpt">
+        {{ post.venue | markdownify }}
+      </div>
+      {% endif %} {% if post.excerpt %}
+      <div class="archive__item-excerpt">
+        {{ post.excerpt | markdownify }}
       </div>
       {% endif %}
+      <div>
+      {% if post.paper %}
+        {% if post.paper contains "://" %}
+          {% capture p_url %}{{ post.paper }}{% endcapture %}
+        {% else %}
+          {% capture p_url %}
+            {{ post.paper | relative_url }}
+          {% endcapture %}
+        {% endif %}
+        <a href="{{ p_url }}" class="btn btn--success">Read the paper</a>
+      {% endif %}
 
-      <div class="archive__item-body">
-        {% if title %}
-        <h2 class="archive__item-title">{{ title }}</h2> {% endif %} {% if post.venue %}
-        <div class="archive__item-excerpt">
-          {{ post.venue | markdownify }}
-        </div>
-        {% endif %} {% if post.excerpt %}
-        <div class="archive__item-excerpt">
-          {{ post.excerpt | markdownify }}
-        </div>
+      {% if post.code %}
+        {% if post.code contains "://" %}
+          {% capture c_url %}{{ post.code }}{% endcapture %}
+        {% else %}
+          {% capture c_url %}
+            {{ post.code | relative_url }}
+          {% endcapture %}
         {% endif %}
-        <div>
-        {% if post.paper %}
-          {% if post.paper contains "://" %}
-            {% capture p_url %}{{ post.paper }}{% endcapture %}
-          {% else %}
-            {% capture p_url %}
-              {{ post.paper | relative_url }}
-            {% endcapture %}
-          {% endif %}
-          <a href="{{ p_url }}" class="btn btn--success">Read the paper</a>
-        {% endif %}
-
-        {% if post.code %}
-          {% if post.code contains "://" %}
-            {% capture c_url %}{{ post.code }}{% endcapture %}
-          {% else %}
-            {% capture c_url %}
-              {{ post.code | relative_url }}
-            {% endcapture %}
-          {% endif %}
-        <a href="{{ c_url }}" class="btn btn--success">Checkout the code</a>
-        {% endif %}
-        </div>
+      <a href="{{ c_url }}" class="btn btn--success">Checkout the code</a>
+      {% endif %}
       </div>
     </div>
   </div>
