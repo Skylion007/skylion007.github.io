@@ -1,7 +1,9 @@
 {% if post.header.teaser %}
   {% capture teaser %}{{ post.header.teaser }}{% endcapture %}
-{% else %}
+{% elsif site.teaser %}
   {% assign teaser = site.teaser %}
+{% else %}
+  {% assign teaser = nil %}
 {% endif %}
 
 {% if post.id %}
@@ -16,19 +18,24 @@
   <div class="archive__item">
     {% if teaser %}
     <div class="archive__item-teaser">
-      <img src={% if f.image_path contains "://" %} "{{ teaser }}" {% else %} "{{ teaser | relative_url }}" {% endif %} alt="{% if f.alt %}{{ f.alt }}{% endif %}"> {% if f.image_caption %}
-      <span class="archive__item-caption">{{ f.image_caption | markdownify | remove: "<p>" | remove: "</p>" }}</span> {% endif %}
+      <img src={% if f.image_path contains "://" %} "{{ teaser }}" {% else %} "{{ teaser | relative_url }}" {% endif %} alt="{% if f.alt %}{{ f.alt }}{% endif %}">
+      {% if f.image_caption %} <span class="archive__item-caption">{{ f.image_caption | markdownify | remove: "<p>" | remove: "</p>" }}</span> {% endif %}
     </div>
     {% endif %}
 
     <div class="archive__item-body">
       {% if title %}
-      <h2 class="archive__item-title">{{ title }}</h2> {% endif %} {% if post.venue %}
-      <div class="archive__item-excerpt">
-        {{ post.venue | markdownify }}
+        <h2 class="archive__item-title">{{ title }}</h2>
+      {% endif %} {% if post.venue %}
+      <div class="archive__item-excerpt ">
+        {{ post.venue | markdownify | remove: '<p>' | remove: '</p>' }}
+      </div> {% endif %}{% if post.pub-authors %} <div class="archive__item-subexcerpt">
+        {% for author in post.pub-authors %}
+         {{author.pub-author}}{% if forloop.last == false %},{% endif %}
+        {% endfor %}
       </div>
-      {% endif %} {% if post.excerpt %}
-      <div class="archive__item-excerpt">
+      {% endif %}{% if post.excerpt %}
+      <div class="archive__item-subexcerpt">
         {{ post.excerpt | markdownify }}
       </div>
       {% endif %}
