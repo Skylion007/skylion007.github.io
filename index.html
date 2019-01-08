@@ -1,5 +1,5 @@
 ---
-title: About Me
+title: Publications
 layout: single
 author_profile: true
 header:
@@ -10,6 +10,12 @@ header:
   # cta_url: "/cv/"
 ---
 
-<div class='notice'>
+<!--<div class='notice'>
 This is website is stil under construction so pardon the clutter.
+</div>-->
+{% assign pubs = site.publications | sort: 'order' | reverse %}
+<div class="feature__wrapper">
+{% for post in pubs %}
+  {% include publication-link.html %}
+{% endfor %}
 </div>
